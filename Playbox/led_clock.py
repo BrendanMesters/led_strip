@@ -51,6 +51,29 @@ def main():
                                     f"\n {six_gray[my_time[1]]} minutes ({my_time[1]}) " +
                                     f"\n {six_gray[my_time[2]]} seconds ({my_time[2]})" )
 
+    hour_colour = (255, 0, 0)
+    minute_colour = (0, 255, 0)
+    second_colour = (0, 0, 255)
+    divide_colour = (255, 255, 255)
+    while True:
+        time.sleep(0.1)
+        now = datetime.now()
+        six_gray = get_gray(6)
+        five_gray = get_gray(5)
+        my_time = (now.hour + 1, now.minute, now.second)
+
+        # [0-4][5][6-11][12][13-18] == Hours |white| minutes |white| seconds
+        
+        hours = [hour_colour if i in five_gray[my_time[0]] else (0, 0, 0) for i in range(5)]
+        minutes = [minute_colour if i in six_gray[my_time[1]] else (0, 0, 0) for i in range(6)]
+        seconds = [second_colour if i in six_gray[my_time[2]] else (0, 0, 0) for i in range(6)]
+        retval = hours + [divide_colour] + minutes + [divide_colour] + seconds
+
+        for i, c in enumerate(retval):
+            pixels[i] = c
+
+
+
     while True:
         time.sleep(0.1)
         #print(f"The time in greycode is \n {five_gray[my_time[0]]} hours ({my_time[0]})" +
