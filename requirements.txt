@@ -1,0 +1,4 @@
+Adafruit/neopixel library: https://learn.adafruit.com/neopixels-on-raspberry-pi/python-usage
+backend library thingy: https://tutorials-raspberrypi.com/connect-control-raspberry-pi-ws2812-rgb-led-strips/\n
+Daemonize library: `sudo pip install daemonize`
+Daemonize is used to have the led controller work like a daemon, prefferably running constant updating code in the background while having a daemon as an interface.
