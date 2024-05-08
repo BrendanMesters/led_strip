@@ -1,0 +1,28 @@
+<!doctype html>
+<title> Lights Controller </title>
+<body>
+	{% if error %}
+		<p> <b>ERROR:</b> {{error}} </p>
+	{% endif %}
+	{% if colour %}
+		{% if scalar %}
+		<p> wow, a templated html view, with a {{scalar}} scaled {{colour}}!!! </p>
+		{% else %}
+			<p> wow, a templated html view, with a {{colour}}!!! </p>
+		{% endif %}
+	{% else %}
+		<p> wow, a templated html view </p>
+	{% endif %}
+
+	<p> If you want to turn the leds off <a href="/off">click here</a> </p>
+	<p> For vibes <a href="/colour/vibes">click here</a> </p>
+	<p> For purple <a href="/colour/purple">click here</a> </p>
+	<p> For magenta <a href="/colour/magenta">click here</a> </p>
+	<p> For cyan <a href="/colour/cyan">click here</a> </p>
+	<p> Set colour intensity to 0.2 <a href="/set_scalar/0.2"> here </a> </p>
+	<p> Set colour intensity to 0.7 <a href="/set_scalar/0.7"> here </a> </p>
+	<p> Set colour intensity to 1.0 <a href="/set_scalar/1.0"> here </a> </p>
+	<p> Set colour intensity to 1.3 <a href="/set_scalar/1.3"> here </a> </p>
+	<p> Set colour intensity to 1.8 <a href="/set_scalar/1.8"> here </a> </p>
+</body>
+
