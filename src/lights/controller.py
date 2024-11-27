@@ -37,10 +37,9 @@ from queue import Queue
 import board
 import neopixel
 
-import pride
+from pride import do_the_gay
 from shared import gamma_correct_colour, parse_colour
 
-pride.do_the_gay()
 
 background_colour = (126, 40, 10)
 scalar = 1
