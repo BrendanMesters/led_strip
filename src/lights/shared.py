@@ -26,3 +26,16 @@ def gamma_correct_colour(rgb_tuple, brightness=1.0):
         int(max_val * (brightness * ((c / max_val) ** gamma))) for c in rgb_tuple
     )
     return corrected
+
+
+# Translate colours
+def parse_colour(col, intensity):
+    colours = {
+        "magenta": (126, 000, 129),
+        "purple": (126, 10, 40),
+        "cyan": (000, 126, 129),
+        "vibes": (185, 109, 58),  # (126,  40,  10),
+        "off": (000, 000, 000),
+    }
+    colour = colours.get(col, (0, 0, 0))
+    return gamma_correct_colour(colour, float(intensity))
