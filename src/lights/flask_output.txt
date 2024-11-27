@@ -1,0 +1,22 @@
+Can't open /dev/mem: Permission denied
+Traceback (most recent call last):
+  File "controller.py", line 170, in <module>
+    main()
+  File "controller.py", line 149, in main
+    server_socket.bind(("localhost", 65432))
+OSError: [Errno 98] Address already in use
+swig/python detected a memory leak of type 'ws2811_t *', no destructor found.
+Traceback (most recent call last):
+  File "controller.py", line 170, in <module>
+    main()
+  File "controller.py", line 149, in main
+    server_socket.bind(("localhost", 65432))
+OSError: [Errno 98] Address already in use
+swig/python detected a memory leak of type 'ws2811_t *', no destructor found.
+Traceback (most recent call last):
+  File "controller.py", line 170, in <module>
+    main()
+  File "controller.py", line 149, in main
+    server_socket.bind(("localhost", 65432))
+OSError: [Errno 98] Address already in use
+swig/python detected a memory leak of type 'ws2811_t *', no destructor found.

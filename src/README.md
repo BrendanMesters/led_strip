@@ -4,9 +4,13 @@ So, the general idea for this project is to write a flexible controller for my n
 
 This controller is ran on my raspberry pi 3.
 
+## Running the system
 
+To run the system we need to set up two things (as of writing)
+1. The lights controller must be activated (via `~/projects/ledstrip/src/lights/run_detatches.fish`), this is a system which listens to requests on an internal port, interprets these requests as commands for the lights and controlls the lights to render the requested setup.
+2. The webpage should be instantiated (via `~/projects/ledstrip/src/website/run_detatches.fish`). This is the interface the end user will use to controll the systems.
 
-### Notes
+## Notes
 
 **Flask**: The program should probably be accessible from a website, so that I can also controll my LED's 
 easily from my phone, for this I'm currently trying out flask.
