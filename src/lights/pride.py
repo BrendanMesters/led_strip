@@ -1,6 +1,6 @@
 # This file will have some helper funcitons to generate various pride flag patterns.
 
-from shared import gamma_corrected_colour
+from shared import gamma_correct_colour
 
 # returns a large prideflag logo
 def do_the_gay(num_pixels=300):
