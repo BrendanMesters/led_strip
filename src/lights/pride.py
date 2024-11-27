@@ -3,7 +3,7 @@
 from shared import gamma_corrected_colour
 
 # returns a large prideflag logo
-def do_the_gay():
+def do_the_gay(num_pixels=300):
     pride_flag = [
         (228, 3, 3),
         (255, 140, 0),
@@ -15,7 +15,6 @@ def do_the_gay():
     for i in range(len(pride_flag)):
         pride_flag[i] = gamma_correct_colour(pride_flag[i])
     pixel_set = [
-        pride_flag[(int(i / 3)) % len(pride_flag)][(1 - i) % 3] for i in range(900)
+        pride_flag[(int(i / 3)) % len(pride_flag)][i % 3] for i in range(num_pixels * 3)
     ]
-    buffer = bytearray(pixel_set)
-    pixels._transmit(buffer)
+    return pixel_set

@@ -49,33 +49,14 @@ pixels = None
 
 # Led colour setting
 def set_leds(led_inputs: list):
-    """Displays a list of k 3-pairs of numbers (in RGB format) into the led strip."""
+    """
+    Displays a list of k 3-pairs of numbers (in RGB format) into the led strip.
+    NOTE: the values SHOULD BE GAMMA CORRECTED, as this is not done in this function
+    """
     global pixels
     if pixels is None:
         pixels = neopixel.NeoPixel(board.D18, 300)
     pixel_set = [led_inputs[(1 - i) % 3] for i in range(900)]
-    buffer = bytearray(pixel_set)
-    pixels._transmit(buffer)
-
-
-# Do the gay
-def do_the_gay():
-    global pixels
-    if pixels is None:
-        pixels = neopixel.NeoPixel(board.D18, 300)
-    pride_flag = [
-        (228, 3, 3),
-        (255, 140, 0),
-        (255, 237, 0),
-        (0, 128, 38),
-        (36, 64, 142),
-        (73, 29, 82),
-    ]
-    for i in range(len(pride_flag)):
-        pride_flag[i] = gamma_correct_colour(pride_flag[i])
-    pixel_set = [
-        pride_flag[(int(i / 3)) % len(pride_flag)][(1 - i) % 3] for i in range(900)
-    ]
     buffer = bytearray(pixel_set)
     pixels._transmit(buffer)
 
@@ -95,7 +76,8 @@ def handle_web_messages(server_socket):
                 print(f"{command[0]} {command[1]}")
                 fun = command[1]
                 if fun == "GAY":
-                    do_the_gay()
+                    pixels = do_the_gay()
+                    set_leds(pixels)
                 pass
             elif command[0] == "COLOUR":
                 print(f"{command[0]} {command[1]} {command[2]}")
