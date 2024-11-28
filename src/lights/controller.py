@@ -44,6 +44,7 @@ from shared import gamma_correct_colour, parse_colour
 background_colour = (126, 40, 10)
 scalar = 1
 pixels = None
+NUM_PIXELS = 300
 
 
 # Led colour setting
@@ -54,9 +55,10 @@ def set_leds(led_inputs: list):
     """
     global pixels
     if pixels is None:
-        pixels = neopixel.NeoPixel(board.D18, 300)
-    pixel_set = [led_inputs[(1 - i) % 3] for i in range(900)]
-    buffer = bytearray(pixel_set)
+        pixels = neopixel.NeoPixel(board.D18, NUM_PIXELS)
+    extended_led_input = [led_inputs[i % len(led_inputs)] for i in range(NUM_PIXELS * 3)]
+    GRB_pixels = [extended_led_input[(i-(i%3)) + ((1-i)%3)] for i in range(NUM_PIXELS * 3)]
+    buffer = bytearray(GRB_pixels)
     pixels._transmit(buffer)
 
 
@@ -76,6 +78,7 @@ def handle_web_messages(server_socket):
                 fun = command[1]
                 if fun == "GAY":
                     pixels = do_the_gay()
+                    print(pixels)
                     set_leds(pixels)
                 pass
             elif command[0] == "COLOUR":
