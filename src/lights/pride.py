@@ -15,6 +15,7 @@ def do_the_gay(num_pixels=300):
     for i in range(len(pride_flag)):
         pride_flag[i] = gamma_correct_colour(pride_flag[i])
     pixel_set = [
-        pride_flag[(int(i / 3)) % len(pride_flag)][i % 3] for i in range(num_pixels * 3)
+        # pride_flag[(int(i / 3)) % len(pride_flag)][i % 3] for i in range(num_pixels * 3)
+        pride_flag[(int(i / 3)) % len(pride_flag)][i % 3] for i in range(len(pride_flag) * 3)
     ]
     return pixel_set
